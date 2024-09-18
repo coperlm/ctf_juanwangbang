@@ -13,7 +13,7 @@ import datetime
 def searcher(id,category):
     url = f'https://buuoj.cn/api/v1/users/{id}/solves'
     headers = {
-        "cookie": "mydas_next_url=https://buuoj.cn/; next=https://buuoj.cn/; session=20d38a52-2c5d-4e17-9141-9063fb9c06ca.Invg0lor3S79B6Z9K7Dr7CMTwmE",
+        "cookie": "your cookie",
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
     }
     
