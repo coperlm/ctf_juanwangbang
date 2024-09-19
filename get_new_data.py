@@ -81,6 +81,9 @@ def read_from_file(filename):
         lines = []
         with open(filename, 'r', encoding='utf-8') as file:
             for line in file:
+                #过滤老登，只有七位的（算上换行符）才是新生
+                if len( line ) <= 6:
+                    continue
                 lines.append(line.strip())  # 去除每行末尾的换行符
         return lines
     except FileNotFoundError:
@@ -132,7 +135,8 @@ def solve_category( lines , category ):
 def main():
     input_filename = 'input.txt'  # 输入文件名
     output_filename = 'output.md'  # 输出文件名
-    categories = ['Crypto','Web','Pwn','Reverse','Misc']
+    #在这里输入需要统计的方向
+    categories = ['Crypto','Web','Pwn','Reverse','Misc','Basic']
     # 读取输入文件内容
     input_lines = read_from_file(input_filename)
     # 如果读取成功，写入输出文件
@@ -140,8 +144,14 @@ def main():
     if input_lines:
         for i in categories:
             print( i )
-            outputer += i + "方向卷王榜" + '\n'
-            outputer += str(solve_category(input_lines,i)) + '\n'
+            
+            add_string = str(solve_category(input_lines,i))
+            if add_string == '':
+                outputer += '没有人做' + i + '的题喵，是不是去卷其他方向了喵' + '\n'
+            else:
+                outputer += i + "方向卷王榜" + '\n'
+                outputer += add_string + '\n'
+
         write_to_file(output_filename, outputer)
 
 if __name__ == "__main__":
