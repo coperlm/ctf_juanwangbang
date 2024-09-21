@@ -13,7 +13,7 @@ import datetime
 def searcher(id,category):
     url = f'https://buuoj.cn/api/v1/users/{id}/solves'
     headers = {
-        "cookie": "your cookie",
+        "cookie": "mydas_next_url=https://buuoj.cn/; next=https://buuoj.cn/; session=62c9e71d-a4f5-475c-80d0-fc0478da9a22.EDEAZHu5c04Ylyig4lfNoJo26Po",
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
     }
     
@@ -81,8 +81,9 @@ def read_from_file(filename):
         lines = []
         with open(filename, 'r', encoding='utf-8') as file:
             for line in file:
-                #过滤老登，只有七位的（算上换行符）才是新生
-                if len( line ) <= 6:
+                #过滤老登
+                input_id = int(line[:len(line)-1])
+                if input_id <= 170000 or input_id == 174802:
                     continue
                 lines.append(line.strip())  # 去除每行末尾的换行符
         return lines
@@ -112,7 +113,8 @@ def solve_category( lines , category ):
     category_sum = []
     for line in lines:
         transed = str(str(searcher(str(line),category)).strip(' '))
-        print( transed )
+        if transed != '0':
+            print( transed )
         t = (line,int(transed))
         if t[1] == 0:
             continue
@@ -140,7 +142,7 @@ def main():
     # 读取输入文件内容
     input_lines = read_from_file(input_filename)
     # 如果读取成功，写入输出文件
-    outputer = "该榜单生成于 " + str(datetime.date.today())+'\n\n'
+    outputer = "该榜单生成于 " + str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))+'\n\n'
     if input_lines:
         for i in categories:
             print( i )
