@@ -33,4 +33,4 @@
 
 1.0版本：
 
-[more discribe](https://coperlm.github.io/2024/09/17/关于ctf卷王排行榜的说明/)
+[more discribe](https://coperlm.github.io/2024/09/17/%E5%85%B3%E4%BA%8Ectf%E5%8D%B7%E7%8E%8B%E6%8E%92%E8%A1%8C%E6%A6%9C%E7%9A%84%E9%A1%B9%E7%9B%AE%E8%AF%B4%E6%98%8E/)
